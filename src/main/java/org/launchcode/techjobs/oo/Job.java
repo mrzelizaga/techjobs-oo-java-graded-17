@@ -2,6 +2,8 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
+
 public class Job {
 
     private int id;
@@ -87,15 +89,15 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+    @Override
     public String toString() {
-        String nameValue = getName().isEmpty() ? "Data not available" : getName();
-        return "\n" +
-                "ID: " + getId() + "\n" +
-                "Name: " + nameValue + "\n" +
-                "Employer: " + getEmployer() + "\n" +
-                "Location: " + getLocation() + "\n" +
-                "Position Type: " + getPositionType() + "\n" +
-                "Core Competency: " + getCoreCompetency() + "\n" +
-                "\n";
+        String idValue = "ID: " + getId() + "\n";
+        String nameValue = "Name: " + (getName() != null && !getName().isEmpty() ? getName() : "Data not available") + "\n";
+        String employerValue = "Employer: " + (getEmployer() != null && !getEmployer().toString().isEmpty() ? getEmployer().toString() : "Data not available") + "\n";
+        String locationValue = "Location: " + (getLocation() != null && !getLocation().toString().isEmpty() ? getLocation().toString() : "Data not available") + "\n";
+        String positionTypeValue = "Position Type: " + (getPositionType() != null && !getPositionType().toString().isEmpty() ? getPositionType().toString() : "Data not available") + "\n";
+        String coreCompetencyValue = "Core Competency: " + (getCoreCompetency() != null && !getCoreCompetency().toString().isEmpty() ? getCoreCompetency().toString() : "Data not available");
+
+        return lineSeparator() + idValue + nameValue + employerValue + locationValue + positionTypeValue + coreCompetencyValue + lineSeparator();
     }
 }
